@@ -9,6 +9,7 @@
     "test": "gulp test"
   },
   "dependencies": {
+    "@googlemaps/markerclusterer": "^1.0.23",
     "@googlemaps/react-wrapper": "^1.1.23",
     "@googlemaps/typescript-guards": "^1.0.6",
     "@microsoft/sp-core-library": "1.13.1",
