@@ -4,6 +4,7 @@ import { IGoogleMapWrapperTest2Props } from './IGoogleMapWrapperTest2Props';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import {MyMapComponent} from './MyMapComponent';
+import NewMapComponent from './NewMapComponent';
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
@@ -94,8 +95,7 @@ export const GoogleMapWrapperTest2: React.VFC<IGoogleMapWrapperTest2Props> = () 
       </Wrapper>
       {/* Basic form for controlling center and zoom of map. */}
       {form}
+      <NewMapComponent></NewMapComponent>
     </div>
   );
 }
-
-export {};
