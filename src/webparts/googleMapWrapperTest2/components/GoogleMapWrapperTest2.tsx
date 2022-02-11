@@ -6,7 +6,7 @@ import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import { MyMapComponent } from './MyMapComponent';
 import NewMapComponent from './NewMapComponent';
 import { MyMarker } from './MyMarker';
-import { InitMap } from './InitMap';
+import { MapCluster } from './MapCluster';
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
@@ -85,7 +85,7 @@ export const GoogleMapWrapperTest2: React.VFC<IGoogleMapWrapperTest2Props> = () 
       <div id="map" style={{height : '500px', width: '1000px' }}></div>
       <Wrapper apiKey={"AIzaSyD0wAUgW8Zz3bPSY0ZvsrYxTpa5Gg8-b6Q"} render={render}>
       {/* <div id="map"></div> */}
-        <InitMap ></InitMap>
+        <MapCluster ></MapCluster>
         {/* <MyMapComponent
           center={center}
           onClick={onClick}

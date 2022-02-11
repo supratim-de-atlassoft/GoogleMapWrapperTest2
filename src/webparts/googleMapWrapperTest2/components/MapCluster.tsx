@@ -17,11 +17,12 @@
 // import "./style.css";
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
 import * as React from "react";
+import { SideBar } from "./Sidebar";
 // }
 // export function initMap(): void {
-export const InitMap: React.FC<any> = ({
+export const MapCluster: React.FC<any> = ({
 }) => {
-    // export const MyMapComponent: React.FC<MapProps> = ({
+    const [show, setShow] = React.useState(false);
     const map = new google.maps.Map(
         document.getElementById('map') as HTMLElement,
         {
@@ -49,8 +50,37 @@ export const InitMap: React.FC<any> = ({
         // markers can only be keyboard focusable when they have click listeners
         // open info window when marker is clicked
         marker.addListener("click", () => {
-            infoWindow.setContent(label);
-            infoWindow.open(map, marker);
+            const contentString =
+                '<div id="content">' +
+                '<div id="siteNotice">' +
+                "</div>" +
+                '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
+                '<div id="bodyContent">' +
+                "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+                "sandstone rock formation in the southern part of the " +
+                "Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) " +
+                "south west of the nearest large town, Alice Springs; 450&#160;km " +
+                "(280&#160;mi) by road. Kata Tjuta and Uluru are the two major " +
+                "features of the Uluru - Kata Tjuta National Park. Uluru is " +
+                "sacred to the Pitjantjatjara and Yankunytjatjara, the " +
+                "Aboriginal people of the area. It has many springs, waterholes, " +
+                "rock caves and ancient paintings. Uluru is listed as a World " +
+                "Heritage Site.</p>" +
+                '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
+                "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
+                "(last visited June 22, 2009).</p>" +
+                "</div>" +
+                "</div>";
+            console.log("im clicked")
+            // infoWindow.setContent(label);
+            // infoWindow.setContent(contentString)
+            // // infoWindow.open(map, marker);
+            // infoWindow.open({
+            //     anchor: marker,
+            //     map,
+            //     // shouldFocus: false,
+            //   });
+            setShow(true);
         });
 
         return marker;
@@ -59,11 +89,16 @@ export const InitMap: React.FC<any> = ({
     // Add a marker clusterer to manage the markers.
     new MarkerClusterer({ markers, map });
 
+    const handleViewSidebar = () => setShow(false);
+
     return (
         <>
             <div id="map"></div>
+            <SideBar isOpen={show} toggleSidebar={handleViewSidebar} />
         </>
     );
+
+   
 }
 
 const locations = [
