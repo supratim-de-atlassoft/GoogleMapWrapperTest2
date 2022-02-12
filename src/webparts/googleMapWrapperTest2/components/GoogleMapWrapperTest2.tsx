@@ -6,6 +6,7 @@ import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import { MyMapComponent } from './MyMapComponent';
 import NewMapComponent from './NewMapComponent';
 import { MyMarker } from './MyMarker';
+import { MapCluster } from './MapCluster';
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
@@ -81,8 +82,11 @@ export const GoogleMapWrapperTest2: React.VFC<IGoogleMapWrapperTest2Props> = () 
 
   return (
     <div style={{ display: "flex", height: "100%" }}>
-      {/* <Wrapper apiKey={"AIzaSyD0wAUgW8Zz3bPSY0ZvsrYxTpa5Gg8-b6Q"} render={render}>
-        <MyMapComponent
+      <div id="map" style={{height : '500px', width: '1000px' }}></div>
+      <Wrapper apiKey={"AIzaSyD0wAUgW8Zz3bPSY0ZvsrYxTpa5Gg8-b6Q"} render={render}>
+      {/* <div id="map"></div> */}
+        <MapCluster ></MapCluster>
+        {/* <MyMapComponent
           center={center}
           onClick={onClick}
           onIdle={onIdle}
@@ -92,22 +96,23 @@ export const GoogleMapWrapperTest2: React.VFC<IGoogleMapWrapperTest2Props> = () 
           {clicks.map((latLng, i) => (
             <MyMarker key={i} position={latLng} />
           ))}
-        </MyMapComponent>
-      </Wrapper> */}
+        </MyMapComponent> */}
+      </Wrapper>
       {/* Basic form for controlling center and zoom of map. */}
-      {form}
+      {/* {form} */}
 
-      <NewMapComponent
-          center={center}
-          onClick={onClick}
-          onIdle={onIdle}
-          zoom={zoom}
-          style={{ flexGrow: "1", height: "100%" }}
-        >
-          {clicks.map((latLng, i) => (
-            <MyMarker key={i} position={latLng} />
-          ))}
-        </NewMapComponent>
+      {/* <NewMapComponent
+        center={center}
+        onClick={onClick}
+        onIdle={onIdle}
+        zoom={zoom}
+        style={{ flexGrow: "1", height: "100%" }}
+      >
+        {clicks.map((latLng, i) => (
+          <MyMarker key={i} position={latLng} />
+        ))}
+      </NewMapComponent> */}
+
     </div>
   );
 }
