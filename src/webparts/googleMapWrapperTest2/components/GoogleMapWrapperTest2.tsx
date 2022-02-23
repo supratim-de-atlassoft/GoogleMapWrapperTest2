@@ -8,6 +8,9 @@ import NewMapComponent from './NewMapComponent';
 import { MyMarker } from './MyMarker';
 import { MapCluster } from './MapCluster';
 
+import { Button, Card, Col, Container, Modal, Row } from "react-bootstrap";
+
+
 const render = (status: Status) => {
   return <h1>{status}</h1>;
 };
@@ -80,11 +83,47 @@ export const GoogleMapWrapperTest2: React.VFC<IGoogleMapWrapperTest2Props> = () 
     </div>
   );
 
+
+  const mapDetails = (
+    <div
+      style={{
+        padding: "1rem",
+        flexBasis: "250px",
+        height: "100%",
+        overflow: "auto",
+      }}
+    >
+      <h1 id="locatName">Suntory Hakushu Distillery</h1>
+      <div id="editButton"><a href="/Pages/Location-Admin.aspx?weburl=/CONNECT/rackhouse/distillerytours&amp;locationid=03182017055609">Edit</a><br></br></div>
+      <h2 id="locatLocation">Hokuto, Japan</h2>
+      <div style={{ display: "block", width: "70px", height: "50px" }}>Carousel Here...</div>
+      <p id="locatDesc"><div className="ExternalClass716C9BE4E3E640D981B9B9344E6A4104">The Hakushu Distillery taps into the rich natural bounty of the surrounding forests to craft premium whisky. Discover the passion and commitment to excellence behind the launching of the Hakushu brand through special videos, distillery tours, and tastings.<div className="ExternalClassB15DF5B5040A4DDF9726A87ADD0DF347">
+      </div></div></p>
+
+      <div id="locatAction">
+                    <h3 id="linksHeader">Tour the Distillery</h3>
+                    <div className="btn-container" id="linksContainer"></div>
+                    <div className="btn-container" id="privateLinksContainer"><a className="btn btn-primary action-link" target="_blank" href="https://whisky.suntory.com/en/global/distilleries/hakushu">In Person</a></div>
+                </div>
+
+                <div id="locatDocs">
+                    <h3 id="assetsHeader">Documents</h3>
+                
+                </div>       
+
+
+    </div>
+  )
+
+
+
   return (
+
     <div style={{ display: "flex", height: "100%" }}>
-      <div id="map" style={{height : '500px', width: '1000px' }}></div>
+
+      <div id="map" style={{ height: '500px', width: '70%' }}></div>
       <Wrapper apiKey={"AIzaSyD0wAUgW8Zz3bPSY0ZvsrYxTpa5Gg8-b6Q"} render={render}>
-      {/* <div id="map"></div> */}
+        {/* <div id="map"></div> */}
         <MapCluster ></MapCluster>
         {/* <MyMapComponent
           center={center}
@@ -92,14 +131,17 @@ export const GoogleMapWrapperTest2: React.VFC<IGoogleMapWrapperTest2Props> = () 
           onIdle={onIdle}
           zoom={zoom}
           style={{ flexGrow: "1", height: "100%" }}
-        >
+         >
           {clicks.map((latLng, i) => (
             <MyMarker key={i} position={latLng} />
           ))}
         </MyMapComponent> */}
       </Wrapper>
+
+
       {/* Basic form for controlling center and zoom of map. */}
       {/* {form} */}
+      {mapDetails}
 
       {/* <NewMapComponent
         center={center}
@@ -107,12 +149,13 @@ export const GoogleMapWrapperTest2: React.VFC<IGoogleMapWrapperTest2Props> = () 
         onIdle={onIdle}
         zoom={zoom}
         style={{ flexGrow: "1", height: "100%" }}
-      >
+        >
         {clicks.map((latLng, i) => (
           <MyMarker key={i} position={latLng} />
         ))}
-      </NewMapComponent> */}
+         </NewMapComponent> */}
 
     </div>
+
   );
 }
