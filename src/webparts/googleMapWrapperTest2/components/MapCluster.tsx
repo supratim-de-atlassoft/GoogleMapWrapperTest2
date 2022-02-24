@@ -20,16 +20,43 @@ import * as React from "react";
 import { SideBar } from "./Sidebar";
 // }
 // export function initMap(): void {
-export const MapCluster: React.FC<any> = ({
-}) => {
+export const MapCluster: React.FC<any> = (props) => {
     const [show, setShow] = React.useState(false);
     const map = new google.maps.Map(
         document.getElementById('map') as HTMLElement,
         {
-            zoom: 3,
-            center: { lat: -28.024, lng: 140.887 },
+            zoom: 0,
+            center: { lat: 0, lng: 0 },
         }
     );
+    console.log(props.mapData)
+    // let mapData1 = props.mapData
+    // console.log(locations)
+    // // console.log(props.mapData)
+    // // let abc = mapData1.map(e => ({
+    // //     itt : parseInt(e.Latitude),
+    // //     brt : parseInt(e.Longitude)
+    // // }));
+    // locations = [{ lat: 35.8264806, lng: 138.2981547 },
+    //                 { lat: -31.56391, lng: 147.154312 }]
+    // console.log(locations)
+    // console.log(mapData1)
+    // React.useEffect(() => {
+    // 	async function anyNameFunction() {
+    // 		console.log("any cat")
+    //         console.log(locations)
+    //         console.log(props.mapData)
+    //         locations = props.mapData.map(e => ({
+    //             lat : parseInt(e.Latitude),
+    //             lng : parseInt(e.Longitude)
+    //         }));
+    //         console.log(locations)
+    // 		console.log("any bat")
+    // 	};
+    // 	// Execute the created function directly
+    // 	anyNameFunction();
+
+    // }, [])
 
     const infoWindow = new google.maps.InfoWindow({
         content: "",
@@ -46,41 +73,22 @@ export const MapCluster: React.FC<any> = ({
             position,
             label,
         });
+        const id = i;
 
         // markers can only be keyboard focusable when they have click listeners
         // open info window when marker is clicked
         marker.addListener("click", () => {
-            const contentString =
-                '<div id="content">' +
-                '<div id="siteNotice">' +
-                "</div>" +
-                '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-                '<div id="bodyContent">' +
-                "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
-                "sandstone rock formation in the southern part of the " +
-                "Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) " +
-                "south west of the nearest large town, Alice Springs; 450&#160;km " +
-                "(280&#160;mi) by road. Kata Tjuta and Uluru are the two major " +
-                "features of the Uluru - Kata Tjuta National Park. Uluru is " +
-                "sacred to the Pitjantjatjara and Yankunytjatjara, the " +
-                "Aboriginal people of the area. It has many springs, waterholes, " +
-                "rock caves and ancient paintings. Uluru is listed as a World " +
-                "Heritage Site.</p>" +
-                '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-                "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
-                "(last visited June 22, 2009).</p>" +
-                "</div>" +
-                "</div>";
-            console.log("im clicked")
-            // infoWindow.setContent(label);
-            // infoWindow.setContent(contentString)
-            // // infoWindow.open(map, marker);
-            // infoWindow.open({
-            //     anchor: marker,
-            //     map,
-            //     // shouldFocus: false,
-            //   });
-            setShow(true);
+            infoWindow.open(map, marker);
+            console.log(map)
+            console.log(id);
+            console.log(marker);
+            console.log(label);
+            console.log(props.mapData)
+
+
+            infoWindow.open(map, marker);
+
+            alert("im clicked")
         });
 
         return marker;
@@ -94,14 +102,17 @@ export const MapCluster: React.FC<any> = ({
     return (
         <>
             <div id="map"></div>
-            <SideBar isOpen={show} toggleSidebar={handleViewSidebar} />
+            {/* <SideBar isOpen={show} toggleSidebar={handleViewSidebar} /> */}
         </>
     );
 
-   
+
 }
 
-const locations = [
+
+
+let locations = [
+    { lat: 35.8264806, lng: 138.2981547 },
     { lat: -31.56391, lng: 147.154312 },
     { lat: -33.718234, lng: 150.363181 },
     { lat: -33.727111, lng: 150.371124 },

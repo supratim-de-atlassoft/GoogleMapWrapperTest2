@@ -13,6 +13,7 @@ import { IGoogleMapWrapperTest2Props } from './components/IGoogleMapWrapperTest2
 
 export interface IGoogleMapWrapperTest2WebPartProps {
   description: string;
+  
 }
 
 export default class GoogleMapWrapperTest2WebPart extends BaseClientSideWebPart<IGoogleMapWrapperTest2WebPartProps> {
@@ -21,7 +22,8 @@ export default class GoogleMapWrapperTest2WebPart extends BaseClientSideWebPart<
     const element: React.ReactElement<IGoogleMapWrapperTest2Props> = React.createElement(
       GoogleMapWrapperTest2,
       {
-        description: this.properties.description
+        description: this.properties.description,
+        context: this.context
       }
     );
 
