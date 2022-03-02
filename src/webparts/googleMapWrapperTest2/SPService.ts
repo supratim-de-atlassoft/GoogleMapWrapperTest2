@@ -6,7 +6,12 @@ import { sp } from "@pnp/sp/presets/all";
 //import { SPHttpClient, SPHttpClientResponse, SPHttpClientConfiguration } from '@microsoft/sp-http';
 
 export class SPService {
-    private listName = "Locations";
+    private locationListName = "Locations";
+    private imageListName ="Location Photos";
+    private docLibraryName ="Location Documents";
+    private linksListName ="Location Links";
+
+    
 
     constructor(private context: WebPartContext) {
         sp.setup({
@@ -16,7 +21,18 @@ export class SPService {
 
     public async getListItem(rackID: any) {
         try {
-            let response = await sp.web.lists.getByTitle(this.listName).items.filter("RackhouseID eq '" + rackID + "'").expand().get();
+            let response = await sp.web.lists.getByTitle(this.locationListName).items.filter("RackhouseID eq '" + rackID + "'").expand().get();
+            return response;
+        }
+        catch (error) {
+            return ("Item is not found");
+
+        }
+    }
+    public async getImages(locID){
+        try {
+            let response = await sp.web.lists.getByTitle(this.imageListName).items.filter("LocationID eq '" + locID + "'").expand().select('Id,FileRef,ServerRedirectedEmbedUri,ServerRedirectedEmbedUrl,RackhouseID, LocationID').get();
+            console.log(response);
             return response;
         }
         catch (error) {
@@ -25,5 +41,29 @@ export class SPService {
         }
     }
 
+    public async getDocuments(locID){
+        try {
+            let response = await sp.web.lists.getByTitle(this.docLibraryName).items.filter("LocationID eq '" + locID + "'").select('Id,FileRef,ServerRedirectedEmbedUri,ServerRedirectedEmbedUrl,RackhouseID, LocationID').get();
+            console.log(response);
+            return response;
+        }
+        catch (error) {
+            return ("Item is not found");
+
+        }
+    } 
+
+
+    public async getLinks(locID){
+        try {
+            let response = await sp.web.lists.getByTitle(this.linksListName).items.filter("LocationID eq '" + locID + "'").expand().get();
+            console.log(response);
+            return response;
+        }
+        catch (error) {
+            return ("Item is not found");
+
+        }
+    }
 
 }

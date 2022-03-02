@@ -20,23 +20,37 @@ import * as React from "react";
 import { SideBar } from "./Sidebar";
 // }
 // export function initMap(): void {
-export const MapCluster: React.FC<any> = (props) => {
-    const [show, setShow] = React.useState(false);
+
+const areEqual = (prevProps, nextProps) => true;
+// const MyComponent = React.memo(props => {
+//     return /*whatever jsx you like */
+//   }, areEqual);
+
+export const MapCluster: React.FC<any> = React.memo((props) => {
+    // const [show, setShow] = React.useState(false);
+    const [currentId, setCurrentId] = React.useState<any>();
+    const [zoom, setZoom] = React.useState(1); // initial zoom
+    const [center, setCenter] = React.useState<google.maps.LatLngLiteral>({
+        lat: 20.8838724,
+        lng: -103.8421465,
+    });
     const map = new google.maps.Map(
         document.getElementById('map') as HTMLElement,
         {
-            zoom: 0,
-            center: { lat: 0, lng: 0 },
+            zoom: zoom,
+            center: center,
         }
     );
+
     console.log(props.mapData)
     // let mapData1 = props.mapData
     // console.log(locations)
     // // console.log(props.mapData)
-    // // let abc = mapData1.map(e => ({
-    // //     itt : parseInt(e.Latitude),
-    // //     brt : parseInt(e.Longitude)
-    // // }));
+    locations = props.mapData.map(e => ({
+        lat: parseInt(e.Latitude),
+        lng: parseInt(e.Longitude)
+    }));
+    console.log(locations)
     // locations = [{ lat: 35.8264806, lng: 138.2981547 },
     //                 { lat: -31.56391, lng: 147.154312 }]
     // console.log(locations)
@@ -59,8 +73,9 @@ export const MapCluster: React.FC<any> = (props) => {
     // }, [])
 
     const infoWindow = new google.maps.InfoWindow({
-        content: "",
+        content: "Test",
         disableAutoPan: true,
+
     });
 
     // Create an array of alphabetical characters used to label the markers.
@@ -78,17 +93,38 @@ export const MapCluster: React.FC<any> = (props) => {
         // markers can only be keyboard focusable when they have click listeners
         // open info window when marker is clicked
         marker.addListener("click", () => {
-            infoWindow.open(map, marker);
+            // infoWindow.open(map, marker);
             console.log(map)
             console.log(id);
-            console.log(marker);
-            console.log(label);
+            console.log(marker.getPosition().lat());
+            console.log(marker.getPosition().lng());
+            console.log(map.getZoom());
             console.log(props.mapData)
 
+            // marker.setIcon("https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png");
 
+            // setMultipleStates(map, marker, id);
+
+            // setCenter({
+            //     lat: marker.getPosition().lat(),
+            //     lng: marker.getPosition().lng()
+            // })
+            // map.setCenter(marker.getPosition() as google.maps.LatLng);
+            // setZoom(map.getZoom())
+            // setCurrentId(id)
+
+            props.onMarkerClick(id)
+
+
+            infoWindow.setContent(props.mapData[id].Title);
             infoWindow.open(map, marker);
 
-            alert("im clicked")
+            // setCenter(marker.getPosition());
+            //alert("im clicked"+props.mapData[id].Location)
+
+            // props.currentLatLog(props.mapData[id].Latitude,props.mapData[id].Longitude)
+
+
         });
 
         return marker;
@@ -97,19 +133,25 @@ export const MapCluster: React.FC<any> = (props) => {
     // Add a marker clusterer to manage the markers.
     new MarkerClusterer({ markers, map });
 
-    const handleViewSidebar = () => setShow(false);
+    // const handleViewSidebar = () => setShow(false);
+    // const setMultipleStates = React.useCallback((inputMap, inputMarker, id) => {
+    //     setCenter({
+    //         lat: inputMap.getPosition().lat(),
+    //         lng: inputMap.getPosition().lng()
+    //     })
+    //     // map.setCenter(marker.getPosition() as google.maps.LatLng);
+    //     setZoom(inputMap.getZoom())
+    //     setCurrentId(id)
+    // }, [map])
 
     return (
         <>
             <div id="map"></div>
+            {/* {somediv} */}
             {/* <SideBar isOpen={show} toggleSidebar={handleViewSidebar} /> */}
         </>
     );
-
-
-}
-
-
+}, areEqual);
 
 let locations = [
     { lat: 35.8264806, lng: 138.2981547 },
