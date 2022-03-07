@@ -1,34 +1,11 @@
-/*
- * Copyright 2019 Google LLC. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/* eslint-disable no-undef, @typescript-eslint/no-unused-vars, no-unused-vars */
-// import "./style.css";
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
 import * as React from "react";
-import { SideBar } from "./Sidebar";
-// }
-// export function initMap(): void {
 
 const areEqual = (prevProps, nextProps) => true;
-// const MyComponent = React.memo(props => {
-//     return /*whatever jsx you like */
-//   }, areEqual);
+
 
 export const MapCluster: React.FC<any> = React.memo((props) => {
-    // const [show, setShow] = React.useState(false);
-    const [currentId, setCurrentId] = React.useState<any>();
+    // const [currentId, setCurrentId] = React.useState<any>();
     const [zoom, setZoom] = React.useState(1); // initial zoom
     const [center, setCenter] = React.useState<google.maps.LatLngLiteral>({
         lat: 20.8838724,
@@ -43,39 +20,15 @@ export const MapCluster: React.FC<any> = React.memo((props) => {
     );
 
     console.log(props.mapData)
-    // let mapData1 = props.mapData
-    // console.log(locations)
-    // // console.log(props.mapData)
     locations = props.mapData.map(e => ({
         lat: parseInt(e.Latitude),
         lng: parseInt(e.Longitude)
     }));
     console.log(locations)
-    // locations = [{ lat: 35.8264806, lng: 138.2981547 },
-    //                 { lat: -31.56391, lng: 147.154312 }]
-    // console.log(locations)
-    // console.log(mapData1)
-    // React.useEffect(() => {
-    // 	async function anyNameFunction() {
-    // 		console.log("any cat")
-    //         console.log(locations)
-    //         console.log(props.mapData)
-    //         locations = props.mapData.map(e => ({
-    //             lat : parseInt(e.Latitude),
-    //             lng : parseInt(e.Longitude)
-    //         }));
-    //         console.log(locations)
-    // 		console.log("any bat")
-    // 	};
-    // 	// Execute the created function directly
-    // 	anyNameFunction();
-
-    // }, [])
 
     const infoWindow = new google.maps.InfoWindow({
         content: "Test",
         disableAutoPan: true,
-
     });
 
     // Create an array of alphabetical characters used to label the markers.
@@ -93,7 +46,6 @@ export const MapCluster: React.FC<any> = React.memo((props) => {
         // markers can only be keyboard focusable when they have click listeners
         // open info window when marker is clicked
         marker.addListener("click", () => {
-            // infoWindow.open(map, marker);
             console.log(map)
             console.log(id);
             console.log(marker.getPosition().lat());
@@ -101,30 +53,11 @@ export const MapCluster: React.FC<any> = React.memo((props) => {
             console.log(map.getZoom());
             console.log(props.mapData)
 
-            // marker.setIcon("https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png");
-
-            // setMultipleStates(map, marker, id);
-
-            // setCenter({
-            //     lat: marker.getPosition().lat(),
-            //     lng: marker.getPosition().lng()
-            // })
-            // map.setCenter(marker.getPosition() as google.maps.LatLng);
-            // setZoom(map.getZoom())
-            // setCurrentId(id)
-
             props.onMarkerClick(id)
 
 
             infoWindow.setContent(props.mapData[id].Title);
             infoWindow.open(map, marker);
-
-            // setCenter(marker.getPosition());
-            //alert("im clicked"+props.mapData[id].Location)
-
-            // props.currentLatLog(props.mapData[id].Latitude,props.mapData[id].Longitude)
-
-
         });
 
         return marker;
@@ -133,50 +66,14 @@ export const MapCluster: React.FC<any> = React.memo((props) => {
     // Add a marker clusterer to manage the markers.
     new MarkerClusterer({ markers, map });
 
-    // const handleViewSidebar = () => setShow(false);
-    // const setMultipleStates = React.useCallback((inputMap, inputMarker, id) => {
-    //     setCenter({
-    //         lat: inputMap.getPosition().lat(),
-    //         lng: inputMap.getPosition().lng()
-    //     })
-    //     // map.setCenter(marker.getPosition() as google.maps.LatLng);
-    //     setZoom(inputMap.getZoom())
-    //     setCurrentId(id)
-    // }, [map])
-
     return (
         <>
             <div id="map"></div>
-            {/* {somediv} */}
-            {/* <SideBar isOpen={show} toggleSidebar={handleViewSidebar} /> */}
         </>
     );
 }, areEqual);
 
 let locations = [
-    { lat: 35.8264806, lng: 138.2981547 },
-    { lat: -31.56391, lng: 147.154312 },
-    { lat: -33.718234, lng: 150.363181 },
-    { lat: -33.727111, lng: 150.371124 },
-    { lat: -33.848588, lng: 151.209834 },
-    { lat: -33.851702, lng: 151.216968 },
-    { lat: -34.671264, lng: 150.863657 },
-    { lat: -35.304724, lng: 148.662905 },
-    { lat: -36.817685, lng: 175.699196 },
-    { lat: -36.828611, lng: 175.790222 },
-    { lat: -37.75, lng: 145.116667 },
-    { lat: -37.759859, lng: 145.128708 },
-    { lat: -37.765015, lng: 145.133858 },
-    { lat: -37.770104, lng: 145.143299 },
-    { lat: -37.7737, lng: 145.145187 },
-    { lat: -37.774785, lng: 145.137978 },
-    { lat: -37.819616, lng: 144.968119 },
-    { lat: -38.330766, lng: 144.695692 },
-    { lat: -39.927193, lng: 175.053218 },
-    { lat: -41.330162, lng: 174.865694 },
-    { lat: -42.734358, lng: 147.439506 },
-    { lat: -42.734358, lng: 147.501315 },
-    { lat: -42.735258, lng: 147.438 },
-    { lat: -43.999792, lng: 170.463352 },
+    { lat: 35.8264806, lng: 138.2981547 }
 ];
 export { };

@@ -11,13 +11,6 @@
   width: 100%;
 }
 
-// :global(.ql-editor h2, .ql-snow .ql-editor h2)
-//    {
-//     font-weight: 100!important;
-//     font-family: 'Oswald' !important;
-//     font-size: 28px;
-// }
-
 .googleMapWrapperTest2 {
   font-family: "Oswald" !important;
  // flex-basis: 45% !important;
@@ -107,5 +100,9 @@
   .button:hover {
     color: white !important;
     background-color: #f35757;
+  }
+  .outerRow{
+    margin: 0 !important;
+    margin-left: 20px !important;
   }
 }

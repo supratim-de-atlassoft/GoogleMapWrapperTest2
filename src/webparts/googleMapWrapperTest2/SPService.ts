@@ -1,17 +1,11 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { sp } from "@pnp/sp/presets/all";
-// import pnp from "sp-pnp-js";
-//import * as pnp from "sp-pnp-js";
-
-//import { SPHttpClient, SPHttpClientResponse, SPHttpClientConfiguration } from '@microsoft/sp-http';
 
 export class SPService {
     private locationListName = "Locations";
     private imageListName ="Location Photos";
     private docLibraryName ="Location Documents";
     private linksListName ="Location Links";
-
-    
 
     constructor(private context: WebPartContext) {
         sp.setup({
