@@ -21,10 +21,7 @@ import { getFileTypeIconProps, FileIconType, initializeFileTypeIcons } from '@fl
 
 initializeFileTypeIcons(undefined);
 
-
-
-//import { Button, Col, Container, Row } from 'react-bootstrap';
-
+console.log("abcd");
 
 const render = (status: Status) => {
 	return <h1>{status}</h1>;
