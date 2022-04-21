@@ -48,7 +48,7 @@ export const GoogleMapWrapperTest2: React.VFC<IGoogleMapWrapperTest2Props> = (pr
 
 	const addLocationBut = (
 		<div className={styles.googleMapWrapperTest2} style={{ marginLeft: "3%" }}>
-			<a className={styles.addLocationBut} href={`https://devbeam.sharepoint.com/sites/ModernConnect/SitePages/Location-Administration-Form.aspx?RID=${rackID}`} type="button" style={{ display: "inline" }}>
+			<a className={styles.addLocationBut} href={`https://bgsw1.sharepoint.com/sites/CONNECTII/SitePages/Location-Administration-Form.aspx?RID=${rackID}`} type="button" style={{ display: "inline" }}>
 
 				<h2 style={{ fontSize: "20px" }}>
 					<IoIosAdd size={"30px"} />Add Location
@@ -119,10 +119,10 @@ export const GoogleMapWrapperTest2: React.VFC<IGoogleMapWrapperTest2Props> = (pr
 									})} />
 									{itemDetail.FileRef.substring(40)}
 								</a></td>
-								<td><a data-interception="off" href={"https://devbeam.sharepoint.com/sites/ModernConnect/_layouts/download.aspx?SourceUrl=" + itemDetail.FileRef} ><IoMdDownload size={"20px"} /></a></td>
-								{/* <td><a href={"https://devbeam.sharepoint.com/sites/ModernConnect/_layouts/download.aspx?SourceUrl=" + itemDetail.FileRef} ><IoIosStar size={"20px"} /></a></td> */}
+								<td><a data-interception="off" href={"https://bgsw1.sharepoint.com/sites/CONNECTII/_layouts/download.aspx?SourceUrl=" + itemDetail.FileRef} ><IoMdDownload size={"20px"} /></a></td>
+								{/* <td><a href={"https://bgsw1.sharepoint.com/sites/CONNECTII/_layouts/download.aspx?SourceUrl=" + itemDetail.FileRef} ><IoIosStar size={"20px"} /></a></td> */}
 								<td><a className="share-link hidden-xs hidden-sm"
-									href={`mailto:?subject=${itemDetail.FileRef}&ampbody=Open:%0D%0Ahttps://devbeam.sharepoint.com/sites/ModernConnect/Rackhouse%20Documents/1.%2520CONNECT%2520Tutorial%2520(5.3.2021).mp4"><i className="fa icon-envelope`}><IoIosMail size={"20px"} /></a></td>
+									href={`mailto:?subject=${itemDetail.FileRef}&ampbody=Open:%0D%0Ahttps://bgsw1.sharepoint.com/sites/CONNECTII/Rackhouse%20Documents/1.%2520CONNECT%2520Tutorial%2520(5.3.2021).mp4"><i className="fa icon-envelope`}><IoIosMail size={"20px"} /></a></td>
 							</tr>
 						))}
 
@@ -146,7 +146,7 @@ export const GoogleMapWrapperTest2: React.VFC<IGoogleMapWrapperTest2Props> = (pr
 
 				<h1 style={{ fontSize: "45px", color: "#CC0A0A" }}>{mapDataFromList[currentLocId].Title}</h1>
 
-				<div id="editButton"><a href={`https://devbeam.sharepoint.com/sites/ModernConnect/SitePages/Location-Administration-Form.aspx?RID=${rackID}&LID=${mapDataFromList[currentLocId].ID}`}>Edit</a><br></br></div>
+				<div id="editButton"><a href={`https://bgsw1.sharepoint.com/sites/CONNECTII/SitePages/Location-Administration-Form.aspx?RID=${rackID}&LID=${mapDataFromList[currentLocId].ID}`}>Edit</a><br></br></div>
 
 				<h2 className={styles.locatLocation}>{mapDataFromList[currentLocId].Location}</h2>
 				<div>
