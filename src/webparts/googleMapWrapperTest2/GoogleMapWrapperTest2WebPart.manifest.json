@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "204c4d87-e59f-4ff1-99e6-e9bf93783184",
-  "alias": "GoogleMapWrapperTest2WebPart",
+  "alias": "AtlasMapWrapperCONNECT",
   "componentType": "WebPart",
 
   // The "*" signifies that the version should be taken from the package.json
@@ -19,11 +19,11 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "GoogleMapWrapperTest2" },
-    "description": { "default": "GoogleMapWrapperTest2 description" },
+    "title": { "default": "Atlas_Map_Wrapper_CONNECT" },
+    "description": { "default": "Atlas_Map_Wrapper_CONNECT description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "GoogleMapWrapperTest2"
+      "description": "Atlas_Map_Wrapper_CONNECT"
     }
   }]
 }

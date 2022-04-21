@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "google-map-wrapper-test-2-client-side-solution",
+    "name": "Atlas_Map_Wrapper_CONNECT",
     "id": "f97a9309-7d53-4f84-8a8c-578a4e19a7ba",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
@@ -15,6 +15,6 @@
     }
   },
   "paths": {
-    "zippedPackage": "solution/google-map-wrapper-test-2.sppkg"
+    "zippedPackage": "solution/Atlas_Map_Wrapper_CONNECT.sppkg"
   }
 }
