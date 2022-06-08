@@ -33,6 +33,7 @@ export const GoogleMapWrapperTest2: React.VFC<IGoogleMapWrapperTest2Props> = (pr
 	// });
 
 	var rackID = window.location.pathname.split("/").reverse()[0].split(".")[0];
+	// var rackID = "Rack1651039847230"
 	console.log(rackID)
 
 	React.useEffect(() => {
@@ -110,19 +111,19 @@ export const GoogleMapWrapperTest2: React.VFC<IGoogleMapWrapperTest2Props> = (pr
 
 						{docDataFromLibrary.map((itemDetail, i) => (
 							<tr>
-								<td><a target="_blank" data-interception="off" rel="noopener noreferrer" href={itemDetail.ServerRedirectedEmbedUri != null && itemDetail.ServerRedirectedEmbedUri != "" ? itemDetail.ServerRedirectedEmbedUri : itemDetail.FileRef}>
+								<td><a target="_blank" data-interception="off" rel="noopener noreferrer" href={itemDetail.ServerRedirectedEmbedUri != null && itemDetail.ServerRedirectedEmbedUri != "" ? itemDetail.ServerRedirectedEmbedUri : itemDetail.FileLeafRef}>
 
 									<Icon {...getFileTypeIconProps({
-										extension: itemDetail.FileRef.split(".")[1],
+										extension: itemDetail.FileLeafRef.split(".")[1],
 										size: 20,
 										imageFileType: 'svg'
 									})} />
-									{itemDetail.FileRef.substring(40)}
+									{itemDetail.FileLeafRef}
 								</a></td>
-								<td><a data-interception="off" href={"https://bgsw1.sharepoint.com/sites/CONNECTII/_layouts/download.aspx?SourceUrl=" + itemDetail.FileRef} ><IoMdDownload size={"20px"} /></a></td>
-								{/* <td><a href={"https://bgsw1.sharepoint.com/sites/CONNECTII/_layouts/download.aspx?SourceUrl=" + itemDetail.FileRef} ><IoIosStar size={"20px"} /></a></td> */}
+								<td><a data-interception="off" href={"https://bgsw1.sharepoint.com/sites/CONNECTII/_layouts/download.aspx?SourceUrl=" + itemDetail.FileLeafRef} ><IoMdDownload size={"20px"} /></a></td>
+								{/* <td><a href={"https://bgsw1.sharepoint.com/sites/CONNECTII/_layouts/download.aspx?SourceUrl=" + itemDetail.FileLeafRef} ><IoIosStar size={"20px"} /></a></td> */}
 								<td><a className="share-link hidden-xs hidden-sm"
-									href={`mailto:?subject=${itemDetail.FileRef}&ampbody=Open:%0D%0Ahttps://bgsw1.sharepoint.com/sites/CONNECTII/Rackhouse%20Documents/1.%2520CONNECT%2520Tutorial%2520(5.3.2021).mp4"><i className="fa icon-envelope`}><IoIosMail size={"20px"} /></a></td>
+									href={`mailto:?subject=${itemDetail.FileLeafRef}&ampbody=Open:%0D%0Ahttps://bgsw1.sharepoint.com/sites/CONNECTII/Rackhouse%20Documents/1.%2520CONNECT%2520Tutorial%2520(5.3.2021).mp4"><i className="fa icon-envelope`}><IoIosMail size={"20px"} /></a></td>
 							</tr>
 						))}
 
@@ -155,8 +156,8 @@ export const GoogleMapWrapperTest2: React.VFC<IGoogleMapWrapperTest2Props> = (pr
 
 				</div>
 				<p className={styles.locatDesc}><div className={styles.descText}>
-										
-					<RichText className={styles.descText} value={mapDataFromList[currentLocId].Description} isEditMode={false}/>
+
+					<RichText className={styles.descText} value={mapDataFromList[currentLocId].Description} isEditMode={false} />
 					<div className="ExternalClassB15DF5B5040A4DDF9726A87ADD0DF347">
 					</div></div></p>
 				{linkDataFromList && linkDataFromList.length > 0 ?
@@ -175,7 +176,8 @@ export const GoogleMapWrapperTest2: React.VFC<IGoogleMapWrapperTest2Props> = (pr
 					: null}
 
 
-			</div> : <div className={styles.googleMapWrapperTest2}><p className={styles.pinText}>Select a pin on the map to view location details. </p></div>
+			</div> :
+			<div className={styles.googleMapWrapperTest2}><p className={styles.pinText}>Select a pin on the map to view location details. </p></div>
 
 	)
 

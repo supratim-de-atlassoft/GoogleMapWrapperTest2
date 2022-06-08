@@ -5,12 +5,14 @@ const areEqual = (prevProps, nextProps) => true;
 
 
 export const MapCluster: React.FC<any> = React.memo((props) => {
+
+    const locations = props.mapData.map(e => ({
+        lat: parseFloat(e.Latitude),
+        lng: parseFloat(e.Longitude)
+    }));
     // const [currentId, setCurrentId] = React.useState<any>();
-    const [zoom, setZoom] = React.useState(1); // initial zoom
-    const [center, setCenter] = React.useState<google.maps.LatLngLiteral>({
-        lat: 20.8838724,
-        lng: -103.8421465,
-    });
+    const [zoom, setZoom] = React.useState(10); // initial zoom
+    const [center, setCenter] = React.useState<google.maps.LatLngLiteral>(locations[0]);
     const map = new google.maps.Map(
         document.getElementById('map') as HTMLElement,
         {
@@ -20,11 +22,8 @@ export const MapCluster: React.FC<any> = React.memo((props) => {
     );
 
     console.log(props.mapData)
-    locations = props.mapData.map(e => ({
-        lat: parseInt(e.Latitude),
-        lng: parseInt(e.Longitude)
-    }));
-    console.log(locations)
+ 
+    console.log(locations, locations[0])
 
     const infoWindow = new google.maps.InfoWindow({
         content: "Test",
@@ -73,7 +72,7 @@ export const MapCluster: React.FC<any> = React.memo((props) => {
     );
 }, areEqual);
 
-let locations = [
-    { lat: 35.8264806, lng: 138.2981547 }
-];
+// let locations = [
+//     { lat: 35.8264806, lng: 138.2981547 }
+// ];
 export { };

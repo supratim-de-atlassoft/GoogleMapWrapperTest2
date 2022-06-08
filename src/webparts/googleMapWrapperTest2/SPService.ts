@@ -25,7 +25,7 @@ export class SPService {
     }
     public async getImages(locID){
         try {
-            let response = await sp.web.lists.getByTitle(this.imageListName).items.filter("LocationID eq '" + locID + "'").expand().select('Id,FileRef,ServerRedirectedEmbedUri,ServerRedirectedEmbedUrl,RackhouseID, LocationID').get();
+            let response = await sp.web.lists.getByTitle(this.imageListName).items.filter("LocationID eq '" + locID + "'").expand().select('Id,FileLeafRef, FileRef,ServerRedirectedEmbedUri,ServerRedirectedEmbedUrl,RackhouseID, LocationID').get();
             console.log(response);
             return response;
         }
@@ -37,7 +37,7 @@ export class SPService {
 
     public async getDocuments(locID){
         try {
-            let response = await sp.web.lists.getByTitle(this.docLibraryName).items.filter("LocationID eq '" + locID + "'").select('Id,FileRef,ServerRedirectedEmbedUri,ServerRedirectedEmbedUrl,RackhouseID, LocationID').get();
+            let response = await sp.web.lists.getByTitle(this.docLibraryName).items.filter("LocationID eq '" + locID + "'").select('Id,FileLeafRef, FileRef,ServerRedirectedEmbedUri,ServerRedirectedEmbedUrl,RackhouseID, LocationID').get();
             console.log(response);
             return response;
         }
